@@ -17,7 +17,7 @@ namespace Decode.PackagesApi.Distributor.Controllers
             this.combinatorService = combinatorService;
         }
 
-        [HttpGet("search")]
+        [HttpPost("search")]
         public async Task<IActionResult> SearchAsync([FromBody]PackagesSearchRequest request)
         {
             var response = await combinatorService.SearchAsync(request);

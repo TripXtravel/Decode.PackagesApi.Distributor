@@ -2,8 +2,6 @@
 {
     public class PackagesBookRequest
     {
-        public string RoomToken { get; set; }
-        public string FlightToken { get; set; }
-        public string ActivityToken { get; set; }
+        public string PackageToken { get; set; }
     }
 }

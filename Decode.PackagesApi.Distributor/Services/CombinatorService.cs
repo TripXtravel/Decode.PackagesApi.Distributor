@@ -20,7 +20,11 @@ namespace Decode.PackagesApi.Distributor.Services
 
         public Task<PackagesBookResponse> BookAsync(PackagesBookRequest request)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new PackagesBookResponse()
+            {
+                NFTImage = "https://camino-json.s3.eu-west-1.amazonaws.com/images/NFTtravel.png",
+                NFTJson = "https://camino-json.s3.eu-west-1.amazonaws.com/contracts/Package.json"
+            });
         }
 
         public async Task<PackagesSearchResponse> SearchAsync(PackagesSearchRequest request)
