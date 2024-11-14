@@ -18,9 +18,8 @@ namespace Decode.PackagesApi.Distributor.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchAsync(/*PackagesSearchRequest request*/)
+        public async Task<IActionResult> SearchAsync([FromBody]PackagesSearchRequest request)
         {
-            PackagesSearchRequest request = new PackagesSearchRequest();
             var response = await combinatorService.SearchAsync(request);
             return new OkObjectResult(response);
         }

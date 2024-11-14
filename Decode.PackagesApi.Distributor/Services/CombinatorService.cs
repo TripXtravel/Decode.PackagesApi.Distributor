@@ -2,10 +2,8 @@
 using Decode.PackagesApi.Distributor.Common.Models;
 using Decode.PackagesApi.Distributor.Common.Options;
 using Decode.PackagesApi.Distributor.Services.Interfaces;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace Decode.PackagesApi.Distributor.Services
 {
@@ -53,12 +51,15 @@ namespace Decode.PackagesApi.Distributor.Services
                     {
                         Adults = 2,
                         TravellerIds = u.TravellerIds.ToList(),
-                        Type = u.Type.ToString()
+                        Type = u.Type.ToString(),
+
                     }).ToList(),
                     Remarks = x.Remarks,
                     Bookability = x.Bookability.ToString(),
-                    CheckIn = DateTime.Now.AddDays(20),
-                    CheckOut = DateTime.Now.AddDays(27)
+                    CheckIn = request.SearchParameters.DepartureDate,
+                    CheckOut = request.SearchParameters.ReturnDate,
+                    Images = ImageURL,
+                    Name = $"Hotel name {new[] { "A", "B", "C", "D", "E" }[x.ResultId % 5]}"
                 }).ToList();
 
                 response.Flights = combinatorResponse.Flights.Select(x => new Flight()
@@ -69,8 +70,8 @@ namespace Decode.PackagesApi.Distributor.Services
                     {
                         DepartureAirport = s.Departure.LocationCode.Code,
                         DestinationAirport = s.Arrival.LocationCode.Code,
-                        DepartureTime = DateTime.Now.AddDays(20),
-                        ArrivalTime = DateTime.Now.AddDays(27)
+                        DepartureTime = request.SearchParameters.DepartureDate.AddHours(12),
+                        ArrivalTime = request.SearchParameters.ReturnDate.AddHours(18)
                     })).ToList()
                 }).ToList();
 
@@ -89,6 +90,15 @@ namespace Decode.PackagesApi.Distributor.Services
 
             return response;
         }
+
+        private static readonly List<string> ImageURL = new()
+        {
+            "https://camino-json.s3.eu-west-1.amazonaws.com/images/hotel/1.jpg",
+            "https://camino-json.s3.eu-west-1.amazonaws.com/images/hotel/2.jpg",
+            "https://camino-json.s3.eu-west-1.amazonaws.com/images/hotel/3.jpg",
+            "https://camino-json.s3.eu-west-1.amazonaws.com/images/hotel/4.jpg",
+            "https://camino-json.s3.eu-west-1.amazonaws.com/images/hotel/5.jpg"
+        };
 
         public Task<PackagesValidateResponse> ValidateAsync(PackagesValidateRequest request)
         {

@@ -19,6 +19,7 @@
         public DateTime CheckOut { get; set; }
         public string Remarks { get; set; }
         public string Bookability { get; set; }
+        public List<string> Images { get; set; }
     }
 
     public class Flight
