@@ -1,4 +1,4 @@
-﻿namespace Common.Models
+﻿namespace Decode.PackagesApi.Distributor.Common.Models
 {
     internal class AccomodationResponse
     {

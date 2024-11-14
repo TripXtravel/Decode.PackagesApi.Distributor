@@ -21,7 +21,7 @@ namespace Decode.PackagesApi.Distributor.Services
             throw new NotImplementedException();
         }
 
-        public async Task<PackagesSearchResponse> SearchAsync(PackagesValidateRequest request)
+        public async Task<PackagesSearchResponse> SearchAsync(PackagesSearchRequest request)
         {
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, combinatorOptions.URL);
 

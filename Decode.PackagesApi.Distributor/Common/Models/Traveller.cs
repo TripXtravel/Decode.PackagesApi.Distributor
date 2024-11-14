@@ -1,5 +1,5 @@
 ﻿
-namespace PackagesApi.Combinator.Models
+namespace Decode.PackagesApi.Distributor.Common.Models
 {
     public class Traveller 
     {
