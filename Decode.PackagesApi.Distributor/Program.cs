@@ -1,8 +1,11 @@
 using Decode.PackagesApi.Distributor.Common.Options;
+using Decode.PackagesApi.Distributor.Services;
+using Decode.PackagesApi.Distributor.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ICombinatorService, CombinatorService>();
 builder.Services.Configure<CombinatorOptions>(builder.Configuration.GetSection(nameof(CombinatorOptions)));
 builder.Services.AddHttpClient();
 

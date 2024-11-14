@@ -8,12 +8,13 @@
         public List<Room> Rooms { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
+
     }
     public class Room
     {
         public int Adults { get; set; }
-        public List<short> Childages { get; set; }
-        public List<AvailableOption> AvailableOptions { get; set; }
+        public string Type { get; set; }
+        public List<int> TravellerIds { get; set; } = new List<int>();
     }
 
     public class AvailableOption
