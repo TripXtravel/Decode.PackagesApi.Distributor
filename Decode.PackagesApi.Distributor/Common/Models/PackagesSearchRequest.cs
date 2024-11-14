@@ -2,8 +2,8 @@
 {
     public class PackagesSearchRequest
     {
-        public IEnumerable<AccomodationRequest> Accomodation { get; set; }
-        public IEnumerable<TransportSearchRequest> Transport { get; set; }
+        public IEnumerable<AccomodationRequest> Accomodation { get; set; } = new List<AccomodationRequest>();
+        public IEnumerable<TransportSearchRequest> Transport { get; set; } = new List<TransportSearchRequest>();
 
     }
 }

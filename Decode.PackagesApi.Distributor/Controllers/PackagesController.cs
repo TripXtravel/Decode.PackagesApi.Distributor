@@ -17,21 +17,22 @@ namespace Decode.PackagesApi.Distributor.Controllers
             this.combinatorService = combinatorService;
         }
 
-        [HttpPost("search")]
-        public async Task<IActionResult> SearchAsync(PackagesSearchRequest request)
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchAsync(/*PackagesSearchRequest request*/)
         {
+            PackagesSearchRequest request = new PackagesSearchRequest();
             var response = await combinatorService.SearchAsync(request);
             return new OkObjectResult(response);
         }
 
-        [HttpPost(Name = "Validate")]
+        [HttpPost("validate")]
         public async Task<IActionResult> ValidateAsync(PackagesValidateRequest request)
         {
             var response = await combinatorService.ValidateAsync(request);
             return new OkObjectResult(response);
         }
 
-        [HttpPost(Name = "Book")]
+        [HttpPost("book")]
         public IActionResult Book(PackagesBookRequest request)
         {
             var response = combinatorService.BookAsync(request);
