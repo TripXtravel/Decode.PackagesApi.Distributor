@@ -15,6 +15,8 @@
         public int Adults { get; set; }
         public string Type { get; set; }
         public List<int> TravellerIds { get; set; } = new List<int>();
+        public string SupplierRoomName { get; set; }
+        public string OriginalRoomName { get; set; }
     }
 
     public class AvailableOption

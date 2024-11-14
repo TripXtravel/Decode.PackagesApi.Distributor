@@ -56,10 +56,12 @@ namespace Decode.PackagesApi.Distributor.Services
                         Adults = 2,
                         TravellerIds = u.TravellerIds.ToList(),
                         Type = u.Type.ToString(),
+                        SupplierRoomName = u.SupplierRoomName,
+                        OriginalRoomName = u.OriginalRoomName,
 
                     }).ToList(),
                     Remarks = x.Remarks,
-                    Bookability = x.Bookability.ToString(),
+                    Bookability = x.Bookability?.ToString(),
                     CheckIn = request.SearchParameters.DepartureDate,
                     CheckOut = request.SearchParameters.ReturnDate,
                     Images = ImageURL,
